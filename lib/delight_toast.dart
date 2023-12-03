@@ -26,7 +26,7 @@ class DelightToastBar {
   final Duration animationDuration;
 
   /// Animation Curve
-  final Curve animationCurve;
+  final Curve? animationCurve;
 
   /// Info on each snackbar
   late final SnackBarInfo info;
@@ -38,7 +38,7 @@ class DelightToastBar {
       required this.builder,
       this.animationDuration = const Duration(milliseconds: 700),
       this.autoDismiss = false,
-      this.animationCurve = Curves.bounceInOut})
+      this.animationCurve})
       : assert(
             snackbarDuration.inMilliseconds > animationDuration.inMilliseconds);
 
