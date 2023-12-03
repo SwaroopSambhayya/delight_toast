@@ -1,8 +1,10 @@
 import 'package:delightful_toast/delight_toast.dart';
 import 'package:flutter/material.dart';
 
+/// The gap between stack of cards
 int gapBetweenCard = 15;
 
+/// calculate position of old cards based on current position
 double calculatePosition(
     List<DelightToastBar> toastBars, DelightToastBar self) {
   if (toastBars.isNotEmpty && self != toastBars.last) {
@@ -14,6 +16,7 @@ double calculatePosition(
   return 0;
 }
 
+/// rescale the old cards based on its position
 double calculateScaleFactor(
     List<DelightToastBar> toastBars, DelightToastBar current) {
   int index = toastBars.indexOf(current);

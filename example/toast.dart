@@ -33,7 +33,7 @@ class _DelightToastState extends State<DelightToast> {
                   ),
                 ),
               ),
-            );
+            ).show(context);
             setState(() {
               onClicked = true;
             });

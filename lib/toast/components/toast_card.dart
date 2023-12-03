@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// ToastCard widget to display decent and rich looking snackbar
 class ToastCard extends StatelessWidget {
   final Widget title;
   final Widget? subtitle;

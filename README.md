@@ -13,11 +13,7 @@ and the Flutter guide for
 
 A delighful and very interactive toast or a snackbar to add more delight to your application
 
-
-
 https://github.com/SwaroopSambhayya/delight_toast/assets/31922733/45b77a2e-7a73-44a0-899d-8d2f740097fb
-
-
 
 ## Features
 
@@ -55,10 +51,9 @@ ElevatedButton( onPressed:(){
                   ),
                 ),
               ),
-            );
+            ).show(context);
 
 },
      child: const Text("Toast!")
 )
 ```
-

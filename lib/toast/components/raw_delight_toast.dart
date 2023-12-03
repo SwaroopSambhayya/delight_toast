@@ -6,7 +6,7 @@ class RawDelightToast extends StatefulWidget {
   final Widget child;
   final Duration animationDuration;
   final Duration snackbarDuration;
-  final Curve animationCurve;
+  final Curve? animationCurve;
   final bool autoDismiss;
   final DelightSnackbarPosition snackbarPosition;
   final Function() getscaleFactor;
@@ -22,7 +22,7 @@ class RawDelightToast extends StatefulWidget {
       required this.onRemove,
       this.autoDismiss = true,
       required this.getPosition,
-      required this.animationCurve,
+      this.animationCurve,
       required this.getscaleFactor});
 
   @override
@@ -46,17 +46,21 @@ class RawDelightToastState extends State<RawDelightToast> {
       },
       effects: [
         SlideEffect(
-            begin: const Offset(0, 2),
+            begin: Offset(
+                0,
+                widget.snackbarPosition == DelightSnackbarPosition.bottom
+                    ? 2
+                    : -2),
             end: Offset.zero,
             duration: Duration(
                 milliseconds: 2 * widget.animationDuration.inMilliseconds),
-            curve: Curves.elasticOut),
+            curve: widget.animationCurve ?? Curves.elasticOut),
         FadeEffect(duration: widget.animationDuration, begin: 0, end: 1),
         if (widget.autoDismiss)
           SlideEffect(
             delay: widget.snackbarDuration,
             duration: const Duration(milliseconds: 500),
-            curve: Curves.easeInOut,
+            curve: widget.animationCurve ?? Curves.easeInOut,
             begin: Offset.zero,
             end: const Offset(-1, 0),
           )
@@ -76,8 +80,12 @@ class RawDelightToastState extends State<RawDelightToast> {
       duration: Duration(milliseconds: widget.animationDuration.inMilliseconds),
       key: positionedKey,
       curve: Curves.easeOutBack,
-      top: widget.snackbarPosition == DelightSnackbarPosition.top ? 0 : null,
-      bottom: widget.getPosition() + 70,
+      top: widget.snackbarPosition == DelightSnackbarPosition.top
+          ? widget.getPosition() + 70
+          : null,
+      bottom: widget.snackbarPosition == DelightSnackbarPosition.bottom
+          ? widget.getPosition() + 70
+          : null,
       left: 0,
       right: 0,
       child: Material(

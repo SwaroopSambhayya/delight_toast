@@ -7,13 +7,27 @@ import 'package:flutter/material.dart';
 
 List<DelightToastBar> _toastBars = [];
 
+/// Delight Toast core class
 class DelightToastBar {
+  /// Duration of toast when autoDismiss is true
   final Duration snackbarDuration;
+
+  /// Position of toast
   final DelightSnackbarPosition position;
+
+  /// Set true to dismiss toast automatically based on snackbarDuration
   final bool autoDismiss;
+
+  /// Pass the widget inside builder context
   final WidgetBuilder builder;
+
+  /// Duration of animated transitions
   final Duration animationDuration;
+
+  /// Animation Curve
   final Curve animationCurve;
+
+  /// Info on each snackbar
   late final SnackBarInfo info;
 
   DelightToastBar(
@@ -31,6 +45,7 @@ class DelightToastBar {
     _toastBars.removeWhere((element) => element == this);
   }
 
+  /// Push the snackbar in current context
   void show(BuildContext context) {
     OverlayState overlayState = Navigator.of(context).overlay!;
     info = SnackBarInfo(
@@ -58,6 +73,7 @@ class DelightToastBar {
     });
   }
 
+  /// Remove all the snackbar in the context
   static void removeAll() {
     for (int i = 0; i < _toastBars.length; i++) {
       _toastBars[i].info.entry.remove();
@@ -66,6 +82,7 @@ class DelightToastBar {
   }
 }
 
+/// Snackbar info class
 class SnackBarInfo {
   late final OverlayEntry entry;
   final GlobalKey<RawDelightToastState> key;
