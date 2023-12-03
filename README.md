@@ -29,8 +29,11 @@ https://github.com/SwaroopSambhayya/delight_toast/assets/31922733/45b77a2e-7a73-
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```dart
+// add the import statement
+import 'package:delightful_toast';
+
+```
 
 ## Usage
 
