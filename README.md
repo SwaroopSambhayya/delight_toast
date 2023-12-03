@@ -11,12 +11,15 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A delighful and very interactive toast or a snackbar to add more delight to your application
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+1. Trigger a toastbar
+2. Slide to dismiss a toastbar
+3. Auto dimiss a toastbar
+4. Dismiss on demand via action buttons
+5. Stacking a toasbar in a delightful way!
 
 ## Getting started
 
@@ -25,15 +28,29 @@ start using the package.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Use the toasbar whenever a event has been triggered like onPressed/onTapped or in any other situation where the event is enforced
 
 ```dart
-const like = 'sample';
+ElevatedButton( onPressed:(){
+     DelightToastBar(
+              builder: (context) => const ToastCard(
+                leading: Icon(
+                  Icons.flutter_dash,
+                  size: 28,
+                ),
+                title: Text(
+                  "Hi I'm Dash, Let's have a walkthrough of Delight Toast",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+            );
+
+},
+     child: const Text("Toast!")
+)
 ```
 
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+## Demo

@@ -1,6 +1,10 @@
 name: delightful_toast
 description: A Delightful toasbar package for rich interaction.
 version: 1.0.0
+repository: https://github.com/SwaroopSambhayya/delight_toast
+topics:
+  - snackbar
+  - animation
 
 environment:
   sdk: "^3.0.0"
