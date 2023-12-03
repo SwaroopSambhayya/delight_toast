@@ -9,3 +9,7 @@ Adding the documentation changes
 ## 1.0.2
 
 Adding description with detail in pubspec
+
+## 1.1.0
+
+Minor bugfixes
