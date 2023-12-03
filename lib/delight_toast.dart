@@ -1,3 +1,4 @@
+/// Name of the library
 library delightful_toast;
 
 import 'package:delightful_toast/toast/components/raw_delight_toast.dart';
@@ -30,6 +31,7 @@ class DelightToastBar {
   /// Info on each snackbar
   late final SnackBarInfo info;
 
+  /// Initialise Delight Toastbar with required parameters
   DelightToastBar(
       {this.snackbarDuration = const Duration(milliseconds: 5000),
       this.position = DelightSnackbarPosition.bottom,
@@ -40,6 +42,7 @@ class DelightToastBar {
       : assert(
             snackbarDuration.inMilliseconds > animationDuration.inMilliseconds);
 
+  /// Remove individual toasbars on dismiss
   void remove() {
     info.entry.remove();
     _toastBars.removeWhere((element) => element == this);
@@ -104,7 +107,9 @@ class SnackBarInfo {
   int get hashCode => entry.hashCode ^ key.hashCode ^ createdAt.hashCode;
 }
 
+/// Get all the toastbars which currenlty on context
 extension Cleaner on List<DelightToastBar> {
+  /// clean function to iterate over toastbars which are in context
   List<DelightToastBar> clean() {
     return where((element) => element.info.key.currentState != null).toList();
   }
