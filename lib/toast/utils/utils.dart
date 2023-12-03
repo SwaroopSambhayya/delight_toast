@@ -1,4 +1,4 @@
-import 'package:delightful_toast/toast/delight_toast.dart';
+import 'package:delightful_toast/delight_toast.dart';
 import 'package:flutter/material.dart';
 
 int gapBetweenCard = 15;
