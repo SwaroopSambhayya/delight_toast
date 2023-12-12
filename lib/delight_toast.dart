@@ -49,7 +49,7 @@ class DelightToastBar {
   }
 
   /// Push the snackbar in current context
-  void show(BuildContext context) {
+  GlobalKey<RawDelightToastState> show(BuildContext context) {
     OverlayState overlayState = Navigator.of(context).overlay!;
     info = SnackBarInfo(
       key: GlobalKey<RawDelightToastState>(),
@@ -70,10 +70,14 @@ class DelightToastBar {
       ),
     );
 
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _toastBars.add(this);
-      overlayState.insert(info.entry);
-    });
+    _toastBars.add(this);
+    overlayState.insert(info.entry);
+    return info.key;
+
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    //   _toastBars.add(this);
+    //   overlayState.insert(info.entry);
+    // });
   }
 
   /// Remove all the snackbar in the context
@@ -82,6 +86,29 @@ class DelightToastBar {
       _toastBars[i].info.entry.remove();
     }
     _toastBars.removeWhere((element) => true);
+  }
+
+  /// Remove the last toast on top of the snackbar stack
+  static void removeLast() {
+    _toastBars.last.info.entry.remove();
+    _toastBars.removeLast();
+  }
+
+  /// Remove the oldest toast on the bottom of the snackbar stack
+  static void removeFirst() {
+    _toastBars.first.info.entry.remove();
+    _toastBars.first.remove();
+  }
+
+  /// Remove with key
+  static void removeWithKey(GlobalKey<RawDelightToastState> key) {
+    for (int i = 0; i < _toastBars.length; i++) {
+      if (_toastBars[i].info.key == key) {
+        _toastBars[i].info.entry.remove();
+        _toastBars.removeAt(i);
+        break;
+      }
+    }
   }
 }
 
