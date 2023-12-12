@@ -32,18 +32,15 @@ class DelightToastBar {
   final SnackBarInfo info;
 
   /// Initialise Delight Toastbar with required parameters
-  DelightToastBar({
-    this.snackbarDuration = const Duration(milliseconds: 5000),
-    this.position = DelightSnackbarPosition.bottom,
-    required this.builder,
-    this.animationDuration = const Duration(milliseconds: 700),
-    this.autoDismiss = false,
-    this.animationCurve,
-  })  : info = SnackBarInfo(
-          key: GlobalKey<RawDelightToastState>(),
-          createdAt: DateTime.now(),
-        ),
-        assert(
+  DelightToastBar(
+      {this.snackbarDuration = const Duration(milliseconds: 5000),
+      this.position = DelightSnackbarPosition.bottom,
+      required this.builder,
+      this.animationDuration = const Duration(milliseconds: 700),
+      this.autoDismiss = false,
+      this.animationCurve,
+      required this.info})
+      : assert(
             snackbarDuration.inMilliseconds > animationDuration.inMilliseconds);
 
   /// Remove individual toastbars on dismiss
@@ -73,6 +70,12 @@ class DelightToastBar {
 
     _toastBars.add(this);
     overlayState.insert(info.entry);
+  }
+
+  // * Static helpers
+  static SnackBarInfo generateInfo() {
+    return SnackBarInfo(
+        key: GlobalKey<RawDelightToastState>(), createdAt: DateTime.now());
   }
 
   /// Remove all the snackbar in the context

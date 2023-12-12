@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 List demoToastBars = [
   DelightToastBar(
     autoDismiss: false,
+    info: DelightToastBar.generateInfo(),
     builder: (context) => const ToastCard(
       leading: Icon(
         Icons.flutter_dash,
@@ -21,6 +22,7 @@ List demoToastBars = [
     ),
   ),
   DelightToastBar(
+    info: DelightToastBar.generateInfo(),
     builder: (context) => const ToastCard(
       leading: Icon(
         Icons.flutter_dash,
@@ -36,6 +38,7 @@ List demoToastBars = [
     ),
   ),
   DelightToastBar(
+    info: DelightToastBar.generateInfo(),
     builder: (context) => const ToastCard(
       leading: Icon(
         Icons.flutter_dash,
@@ -51,6 +54,7 @@ List demoToastBars = [
     ),
   ),
   DelightToastBar(
+    info: DelightToastBar.generateInfo(),
     autoDismiss: false,
     builder: (context) => ToastCard(
       leading: const Icon(
@@ -72,6 +76,7 @@ List demoToastBars = [
     ),
   ),
   DelightToastBar(
+    info: DelightToastBar.generateInfo(),
     autoDismiss: true,
     builder: (context) => const ToastCard(
       leading: Icon(
@@ -88,6 +93,7 @@ List demoToastBars = [
     ),
   ),
   DelightToastBar(
+    info: DelightToastBar.generateInfo(),
     builder: (context) => const ToastCard(
       leading: Icon(
         Icons.flutter_dash,
