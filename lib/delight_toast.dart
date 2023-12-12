@@ -29,32 +29,33 @@ class DelightToastBar {
   final Curve? animationCurve;
 
   /// Info on each snackbar
-  late final SnackBarInfo info;
+  final SnackBarInfo info;
 
   /// Initialise Delight Toastbar with required parameters
-  DelightToastBar(
-      {this.snackbarDuration = const Duration(milliseconds: 5000),
-      this.position = DelightSnackbarPosition.bottom,
-      required this.builder,
-      this.animationDuration = const Duration(milliseconds: 700),
-      this.autoDismiss = false,
-      this.animationCurve})
-      : assert(
+  DelightToastBar({
+    this.snackbarDuration = const Duration(milliseconds: 5000),
+    this.position = DelightSnackbarPosition.bottom,
+    required this.builder,
+    this.animationDuration = const Duration(milliseconds: 700),
+    this.autoDismiss = false,
+    this.animationCurve,
+  })  : info = SnackBarInfo(
+          key: GlobalKey<RawDelightToastState>(),
+          createdAt: DateTime.now(),
+        ),
+        assert(
             snackbarDuration.inMilliseconds > animationDuration.inMilliseconds);
 
-  /// Remove individual toasbars on dismiss
+  /// Remove individual toastbars on dismiss
   void remove() {
     info.entry.remove();
     _toastBars.removeWhere((element) => element == this);
   }
 
   /// Push the snackbar in current context
-  GlobalKey<RawDelightToastState> show(BuildContext context) {
+  void show(BuildContext context) {
     OverlayState overlayState = Navigator.of(context).overlay!;
-    info = SnackBarInfo(
-      key: GlobalKey<RawDelightToastState>(),
-      createdAt: DateTime.now(),
-    );
+
     info.entry = OverlayEntry(
       builder: (_) => RawDelightToast(
         key: info.key,
@@ -72,12 +73,6 @@ class DelightToastBar {
 
     _toastBars.add(this);
     overlayState.insert(info.entry);
-    return info.key;
-
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //   _toastBars.add(this);
-    //   overlayState.insert(info.entry);
-    // });
   }
 
   /// Remove all the snackbar in the context
