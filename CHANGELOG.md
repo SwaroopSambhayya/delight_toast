@@ -16,7 +16,8 @@ Minor bugfixes
 
 ## 1.2.0
 
-- Fix bug on multiple stack of toast not shown until the user touches the screen
-- Add `removeLast` / `removeFirst` static functions to remove the last/first toast on the stack
-- Add `removeWithKey` function to remove the toast with the given key
-- Add `toastInfo` property to DelightToast constructor to allow more control on the toast remove using the `removeWithKey`
+- Fix bug on multiple toasts not shown properly until the user touches the screen
+- Add removeLast / removeFirst static functions to remove the last/first toast on the stack.
+- Add removeWithKey function to remove the toast with the given key.
+- Add toastInfo property to DelightToast constructor to allow fine grain more control on the specific toast removal using the removeWithKey function.
+- Add DelightToast.generateInfo() static function to help generates toasts info
