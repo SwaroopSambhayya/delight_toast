@@ -19,7 +19,6 @@ class _DelightToastState extends State<DelightToast> {
         child: ElevatedButton(
           onPressed: () async {
             DelightToastBar(
-              info: DelightToastBar.generateInfo(),
               autoDismiss: false,
               builder: (context) => const ToastCard(
                 leading: Icon(

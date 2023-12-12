@@ -30,7 +30,9 @@ https://github.com/SwaroopSambhayya/delight_toast/assets/31922733/45b77a2e-7a73-
 In pubspec.yaml
 
 ```dart
-    delightful_toast: ^1.1.0
+    delightful_toast:
+    git:
+      url: https://github.com/rootsoft23/delight_toast.git
 ```
 
 ```dart

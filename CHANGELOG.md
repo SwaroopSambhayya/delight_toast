@@ -13,3 +13,10 @@ Adding description with detail in pubspec
 ## 1.1.0
 
 Minor bugfixes
+
+## 1.2.0
+
+- Fix bug on multiple stack of toast not shown until the user touches the screen
+- Add `removeLast` / `removeFirst` static functions to remove the last/first toast on the stack
+- Add `removeWithKey` function to remove the toast with the given key
+- Add `toastInfo` property to DelightToast constructor to allow more control on the toast remove using the `removeWithKey`

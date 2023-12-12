@@ -39,8 +39,9 @@ class DelightToastBar {
       this.animationDuration = const Duration(milliseconds: 700),
       this.autoDismiss = false,
       this.animationCurve,
-      required this.info})
-      : assert(
+      SnackBarInfo? toastInfo})
+      : info = toastInfo ?? DelightToastBar.generateInfo(),
+        assert(
             snackbarDuration.inMilliseconds > animationDuration.inMilliseconds);
 
   /// Remove individual toastbars on dismiss
@@ -86,7 +87,7 @@ class DelightToastBar {
     _toastBars.removeWhere((element) => true);
   }
 
-  /// Remove the last toast on top of the snackbar stack
+  /// Remove the latest toast on top of the snackbar stack
   static void removeLast() {
     _toastBars.last.info.entry.remove();
     _toastBars.removeLast();
@@ -98,7 +99,8 @@ class DelightToastBar {
     _toastBars.first.remove();
   }
 
-  /// Remove with key
+  /// Remove toast with the given key
+  /// key comes from `SnackBarInfo.key`
   static void removeWithKey(GlobalKey<RawDelightToastState> key) {
     for (int i = 0; i < _toastBars.length; i++) {
       if (_toastBars[i].info.key == key) {
